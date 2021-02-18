@@ -18,23 +18,20 @@ namespace Merkle_Root
 
             string tx12 = tx1Hash + tx2Hash;
             byte[] tx12bytes = Encoding.ASCII.GetBytes(tx12);
-            byte[] tx12hashbytes1x = SHA256.Create().ComputeHash(tx12bytes);
-            byte[] tx12hashbytes2x = SHA256.Create().ComputeHash(tx12hashbytes1x);
-            string tx12hash = BitConverter.ToString(tx12hashbytes2x).Replace("-", "").ToLower();
-
+            byte[] tx12hashbytes = Encoding.ASCII.GetBytes(BitConverter.ToString(SHA256.Create().ComputeHash(tx12bytes)).Replace("-", "").ToLower());
+            string tx12hash = BitConverter.ToString(SHA256.Create().ComputeHash(tx12hashbytes)).Replace("-", "").ToLower();
+            Console.WriteLine("First two: " + tx12hash);
             string tx34 = tx3Hash + tx4Hash;
             byte[] tx34bytes = Encoding.ASCII.GetBytes(tx34);
-            byte[] tx34hashbytes1x = SHA256.Create().ComputeHash(tx34bytes);
-            byte[] tx34hashbytes2x = SHA256.Create().ComputeHash(tx34hashbytes1x);
-            string tx34hash = BitConverter.ToString(tx34hashbytes2x).Replace("-", "").ToLower();
-
+            byte[] tx34hashbytes = Encoding.ASCII.GetBytes(BitConverter.ToString(SHA256.Create().ComputeHash(tx34bytes)).Replace("-", "").ToLower());
+            string tx34hash = BitConverter.ToString(SHA256.Create().ComputeHash(tx34hashbytes)).Replace("-", "").ToLower();
+            Console.WriteLine("First two: " + tx34hash);
             string tx1234 = tx12hash + tx34hash;
             byte[] tx1234bytes = Encoding.ASCII.GetBytes(tx1234);
-            byte[] tx1234hashbytes1x = SHA256.Create().ComputeHash(tx1234bytes);
-            byte[] tx1234hashbytes2x = SHA256.Create().ComputeHash(tx1234hashbytes1x);
-            string tx1234hash = BitConverter.ToString(tx1234hashbytes2x).Replace("-", "").ToLower();
+            byte[] tx1234hashbytes = Encoding.ASCII.GetBytes(BitConverter.ToString(SHA256.Create().ComputeHash(tx1234bytes)).Replace("-", "").ToLower());
+            string tx1234hash = BitConverter.ToString(SHA256.Create().ComputeHash(tx1234hashbytes)).Replace("-", "").ToLower();
 
-            Console.WriteLine(tx1234hash);
+            Console.WriteLine("Final: " + tx1234hash);
         }
     }
 }
